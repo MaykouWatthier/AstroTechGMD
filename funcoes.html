@@ -1,0 +1,44 @@
+<!-- Área para listar registros -->
+<div id="listaRegistros" class="bg-white p-6 rounded-lg shadow-md hidden">
+    <h2 class="text-xl font-semibold mb-4">Registros Salvos</h2>
+    <div id="registrosContent"></div>
+</div>
+</div>
+
+<script>
+// Banco de dados simulado (array)
+let registros = [];
+
+// Função para salvar um novo registro
+function salvarRegistro() {
+    const nome = document.getElementById('nome').value;
+    const rota = document.getElementById('rota').value;
+    const horaInicio = document.getElementById('horaInicio').value;
+    const horaTermino = document.getElementById('horaTermino').value;
+    const observacoes = document.getElementById('observacoes').value;
+
+    // Validação simples
+    if (!nome || !rota || !horaInicio || !horaTermino) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
+
+    const registro = {
+        nome: nome,
+        rota: rota,
+        horaInicio: horaInicio,
+        horaTermino: horaTermino,
+        observacoes: observacoes,
+        dataCriacao: new Date().toLocaleString('pt-BR')
+    };
+    registros.push(registro);
+
+    alert(Registro de ${nome} salvo com sucesso!);
+
+    // Limpar formulário
+    document.getElementById('nome').value = '';
+    document.getElementById('rota').value = '';
+    document.getElementById('horaInicio').value = '';
+    document.getElementById('horaTermino').value = '';
+    document.getElementById('observacoes').value = '';
+}
